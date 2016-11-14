@@ -1,4 +1,5 @@
 const url = require('url');
+const fs = require('fs');
 const express = require('express');
 const knex = require('knex');
 const chiki = require('./lib/chiki');
@@ -7,6 +8,7 @@ const config = require('./config');
 
 const { port, hostname } = config;
 const HOST = port !== 80 ? `${hostname}:${port}` : hostname;
+const README = fs.readFileSync('./README.md', 'utf8').replace(/\n/g, '\r\n').replace(/\n*```\n*/g, '');
 
 const REG_WEB_PROTOCOL = /^http|https/i;
 const REG_OTHER_PROTOCOL = /[a-z]+:\/\//i;
@@ -29,6 +31,8 @@ const processRawUrl = (rawUrl) => {
 };
 
 const app = module.exports = express();
+
+app.get('/', (req, res) => res.set('Content-Type', 'text/plain').send(README));
 
 app.get('/:short', (req, res) => {
   chiki.fetch(req.params.short)
@@ -61,6 +65,7 @@ app.get('/add/*{4,32768}', (req, res) => {
 });
 
 app.use((req, res) => res.set('Content-Type', 'text/plain').status(404).end('404 Not found'));
+
 app.use((error, req, res) => {
   res.set('Content-Type', 'text/plain').status(500).end('500 Internal Error');
   console.error(error);

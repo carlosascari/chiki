@@ -19,7 +19,7 @@ DESCRIPTION
 
 OPTIONS
 
-     /              Manual (this page)
+     /             Manual (this page)
 
      /add/:url     Shorten a new url, returns shortened link.
                    Returns status 400, if :url is invalid
