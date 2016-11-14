@@ -43,7 +43,7 @@ AUTHOR
      Carlos Ascari Gutierrez Hermosillo <carlos.ascari.x@gmail.com>
 
 REPOSITORY
-     github.com/carlosascari/chiki
+     github.com/carlosascari/chiki                     peqq.es/b
 
 BUILT WITH
     expressjs       http://expressjs.com/              peqq.es/e
