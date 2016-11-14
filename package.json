@@ -1,0 +1,22 @@
+{
+  "name": "chiki",
+  "version": "1.0.0",
+  "description": "URL shortener service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "url",
+    "short",
+    "service",
+    "server"
+  ],
+  "author": "Carlos Ascari Gutierrez Hermosillo <carlos.ascari.x@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "knex": "^0.12.6"
+  }
+}
