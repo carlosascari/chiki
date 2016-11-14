@@ -24,7 +24,8 @@ OPTIONS
      /add/:url     Shorten a new url, returns shortened link.
                    Returns status 400, if :url is invalid
                    Returns status 500, if something goes wrong
-                   Returns status 200, and the shortened url  in
+                   Returns status 200, if a shortened url was 
+                   created. The shortened url can be found in
                    the body, copy & paste ready.
 
      /:hash        Where :hash is the returned hash after 
