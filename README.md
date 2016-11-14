@@ -18,7 +18,6 @@ DESCRIPTION
      give you a smaller url.
 
 OPTIONS
-
      /             Manual (this page)
 
      /add/:url     Shorten a new url, returns shortened link.

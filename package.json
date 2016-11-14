@@ -13,6 +13,7 @@
     "service",
     "server"
   ],
+  "repository": "carlosascari/chiki",
   "author": "Carlos Ascari Gutierrez Hermosillo <carlos.ascari.x@gmail.com>",
   "license": "MIT",
   "dependencies": {
