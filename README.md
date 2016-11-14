@@ -36,11 +36,18 @@ OPTIONS
                    Returns status 302, and redirects to the
                    original shortened url if :hash is valid.
 
+EXAMPLE
+  http://peqq.es
+
 AUTHOR
      Carlos Ascari Gutierrez Hermosillo <carlos.ascari.x@gmail.com>
 
 REPOSITORY
      github.com/carlosascari/chiki
+
+BUILT WITH
+    expressjs       http://expressjs.com/              peqq.es/e
+    knex            http://knexjs.org/                 peqq.es/f
 
 COPYRIGHT
      MIT License. Copyright (c) 2016 Ascari 
