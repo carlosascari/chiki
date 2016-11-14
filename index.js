@@ -8,8 +8,11 @@ const config = require('./config');
 
 const { port, hostname } = config;
 const HOST = port !== 80 ? `${hostname}:${port}` : hostname;
-const README = fs.readFileSync('./README.md', 'utf8').replace(/\n/g, '\r\n').replace(/\n*```\n*/g, '');
-
+const LOCALS = { host: HOST, title: HOST.replace('.', '').toUpperCase()};
+const README = fs.readFileSync('./README.md', 'utf8')
+  .replace(/\n/g, '\r\n')
+  .replace(/\n*```\n*/g, '')
+  .replace(/{{(\w+)}}/g, (x, local) => LOCALS[local]);
 const REG_WEB_PROTOCOL = /^http|https/i;
 const REG_OTHER_PROTOCOL = /[a-z]+:\/\//i;
 const REG_TLD = /\.[a-z]{2,}/i;

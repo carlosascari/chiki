@@ -1,20 +1,20 @@
 ```
-CHIKI(1)                     User Manual                     CHIKI(1)
+{{title}}(1)                     User Manual                     {{title}}(1)
 
 
 NAME
-     chi.ki - A tiny url shortener
+     {{host}} - A tiny url shortener
 
 SYNOPSIS
-     GET chi.ki/
-     GET chi.ki/add/URL_TO_SHORTEN...
-     GET chi.ki/SHORTENED_URL_HASH...
+     GET {{host}}/
+     GET {{host}}/add/URL_TO_SHORTEN...
+     GET {{host}}/SHORTENED_URL_HASH...
 
 DESCRIPTION
-     chi.ki is a tiny open source url shortening service written
+     {{host}} is a tiny open source url shortening service written
      in nodejs JavaScript. Shortening a url is fast & convinient
      as you don't spend your time visiting this site,   you  can
-     just add the url after the endpoint: chi.ki/add and it will
+     just add the url after the endpoint: {{host}}/add and it will
      give you a smaller url.
 
 OPTIONS
