@@ -6,13 +6,15 @@ const chiki = require('./lib/chiki');
 const bijection = require('./lib/bijection');
 const config = require('./config');
 
+const REG_MUSTACHE = /{{(\w+)}}/g;
 const { port, hostname } = config;
 const HOST = port !== 80 ? `${hostname}:${port}` : hostname;
 const LOCALS = { host: HOST, title: HOST.replace('.', '').toUpperCase()};
+const XPRESS = fs.readFileSync('./xpress.html', 'utf8').replace(REG_MUSTACHE, (x, local) => LOCALS[local] || x);
 const README = fs.readFileSync('./README.md', 'utf8')
   .replace(/\n/g, '\r\n')
   .replace(/\n*```\n*/g, '')
-  .replace(/{{(\w+)}}/g, (x, local) => LOCALS[local]);
+  .replace(REG_MUSTACHE, (x, local) => LOCALS[local]);
 const REG_WEB_PROTOCOL = /^http|https/i;
 const REG_OTHER_PROTOCOL = /[a-z]+:\/\//i;
 const REG_TLD = /\.[a-z]{2,}/i;
@@ -66,6 +68,27 @@ app.get('/add/*{4,32768}', (req, res) => {
     res.status(400).end('400 Invalid url');
   }
 });
+
+app.get('/x/*{4,32768}', (req, res) => {
+  
+  const url = processRawUrl(req.originalUrl.slice(3));
+  if (url) {
+    chiki.create(url)
+    .catch((error) => {
+      res.set('Content-Type', 'text/plain').status(500).end('500 Internal Error');
+      console.error(error);
+    })
+    .then((short) => {
+      const locals = { short };
+      res.set('Content-Type', 'text/html');
+      res.end(XPRESS.replace(REG_MUSTACHE, (x, local) => locals[local]));
+    });
+  } else {
+    res.set('Content-Type', 'text/plain');
+    res.status(400).end('400 Invalid url');
+  }
+});
+
 
 app.use((req, res) => res.set('Content-Type', 'text/plain').status(404).end('404 Not found'));
 

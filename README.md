@@ -8,35 +8,41 @@ NAME
 SYNOPSIS
      GET {{host}}/
      GET {{host}}/add/URL_TO_SHORTEN...
+     GET {{host}}/x/URL_TO_SHORTEN...
      GET {{host}}/SHORTENED_URL_HASH...
 
 DESCRIPTION
-     {{host}} is a tiny open source url shortening service written
+     {{host}} is a tiny opensource url shortening service written
      in nodejs JavaScript. Shortening a url is fast & convinient
-     as you don't spend your time visiting this site,   you  can
-     just add the url after the endpoint: {{host}}/add and it will
+     as you  don't  spend your time visiting  this site, you can
+     add the url after the endpoint: {{host}}/add and it will
      give you a smaller url.
 
 OPTIONS
      /             Manual (this page)
 
-     /add/:url     Shorten a new url, returns shortened link.
+     /add/:url     Shorten  a  new url, returns shortened  link.
                    Returns status 400, if :url is invalid
                    Returns status 500, if something goes wrong
-                   Returns status 200, if a shortened url was 
-                   created. The shortened url can be found in
+                   Returns status 200, if a shortened  url  was 
+                   created. The shortened  url  can be found in
                    the body, copy & paste ready.
 
-     /:hash        Where :hash is the returned hash after 
+     /x/:url       Express. Same as  `/add`, except that it will
+                   replace the url with the shortened url in the
+                   search bar, instead of showing it in the body
+                   Don't touch that mouse! CTRL+a CTRL+c FTW!
+
+     /:hash        Where  :hash  is  the  returned  hash  after 
                    shortening a url.
                    Returns status 400, if :hash is invalid
                    Returns status 404, if hash was never created
                    Returns status 500, if something goes wrong
-                   Returns status 302, and redirects to the
+                   Returns status 302, and  redirects   to   the
                    original shortened url if :hash is valid.
 
 EXAMPLE
-  http://peqq.es
+     http://peqq.es
 
 AUTHOR
      Carlos Ascari Gutierrez Hermosillo <carlos.ascari.x@gmail.com>
@@ -45,8 +51,8 @@ REPOSITORY
      github.com/carlosascari/chiki                     peqq.es/b
 
 BUILT WITH
-    expressjs       http://expressjs.com/              peqq.es/e
-    knex            http://knexjs.org/                 peqq.es/f
+     expressjs       http://expressjs.com/             peqq.es/e
+     knex            http://knexjs.org/                peqq.es/f
 
 COPYRIGHT
      MIT License. Copyright (c) 2016 Ascari 

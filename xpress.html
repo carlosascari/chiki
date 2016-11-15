@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf8'>
+  <title>{{host}}</title>
+</head>
+<body>
+<script type='text/javascript'>
+  if (history && history.replaceState) {
+    history.replaceState({} , null, '/{{short}}');
+    document.body.innerHTML = '                      ↑'.replace(/ /g, '&nbsp;');
+  } else {
+    document.body.innerHTML = '{{host}}/{{short}}';
+  }
+</script>
+</body>
+</html>
